@@ -7,17 +7,15 @@ object Solution {
       dataInfo = readLine().split(" ").map(x => x.toInt).toList
       data = readLine().split(" ").map(x => x.toInt).toList
       } {
-        filterPrint(data, dataInfo(1))
+        filterData(data, dataInfo(1)) match {
+          case List() => println("-1")
+          case result => println(result.mkString(" "))
+        }
       }
   }
 
-  def filterPrint(data: List[Int], min: Int): Unit = {
+  def filterData(data: List[Int], min: Int): List[Int] = {
     val dataMap = data.groupBy(identity)
-    val filterData = data.filter(x => dataMap(x).length >= min)
-    filterData match {
-      case List() => print("-1")
-      case _ => print(filterData.distinct.mkString(" "))
-    }
-    println
+    data.filter(x => dataMap(x).length >= min).distinct
   }
 }
