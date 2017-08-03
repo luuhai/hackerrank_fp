@@ -16,7 +16,7 @@ object Solution {
     val filterData = data.filter(x => dataMap(x).length >= min)
     filterData match {
       case List() => print("-1")
-      case _ => for (i <- filterData.distinct) print(s"$i ")
+      case _ => print(filterData.distinct.mkString(" "))
     }
     println
   }
